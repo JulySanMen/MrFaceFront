@@ -17,7 +17,7 @@ document.getElementById("uploadForm").onsubmit = async function(event) {
         } else {
             // Muestra la imagen procesada
             const processedImage = document.getElementById("processedImage");
-            processedImage.src = "data:image/png;base64," + result.image_base64;
+            processedImage.src = "data:image/png;base64," + result.image_with_points_base64;
             processedImage.style.display = "block"; // Asegura que la imagen se muestre
 
             // Muestra el enlace a Google Drive
