@@ -6,7 +6,7 @@ document.getElementById("uploadForm").onsubmit = async function(event) {
     formData.append("file", fileInput);
 
     try {
-        const response = await fetch("/upload", {
+        const response = await fetch("https://mrface.onrender.com/upload", {
             method: "POST",
             body: formData
         });
