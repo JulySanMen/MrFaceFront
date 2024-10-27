@@ -1,15 +1,13 @@
 document.getElementById("uploadForm").onsubmit = async function(event){
-            const input = document.getElementById('fileInput');
+            event.preventDefault();
+            const fileInput = document.getElementById("file").files[0];
             if (input.files.length === 0) {
                 alert("Por favor, selecciona una imagen.");
                 return;
             }
             
             const formData = new FormData();
-            formData.append('file', input.files[0]);
-
-            // Mostrar el spinner de carga
-            document.getElementById('loading').style.display = 'block';
+            formData.append("file", fileInput);
 
             try {
                 const response = await fetch('https://mrface.onrender.com/upload', {
@@ -17,20 +15,23 @@ document.getElementById("uploadForm").onsubmit = async function(event){
                     body: formData,
                 });
 
-                const data = await response.json();
+                const result = await response.json();
+                if (result.error) {
+                    alert(result.error);
+                } else {
+                    // Muestra la imagen procesada
+                    const processedImage = document.getElementById("processedImage");
+                    processedImage.src = "data:image/png;base64," + result.image_with_points_base64;
+                    processedImage.style.display = "block"; // Asegura que la imagen se muestre
 
-                // Ocultar el spinner de carga
-                document.getElementById('loading').style.display = 'none';
-
-                // Mostrar la imagen procesada
-                const processedImage = document.getElementById('processedImage');
-                processedImage.src = 'data:image/png;base64,' + data.image_with_points_base64;
-                processedImage.style.display = 'block';
-
-                console.log('Imagen original subida con ID:', data.drive_id);
+                    // Muestra el enlace a Google Drive
+                    const driveLink = document.getElementById("driveLink");
+                    driveLink.innerHTML = <a href="https://drive.google.com/file/d/${result.drive_id}/view" target="_blank">Ver en Google Drive</a>;
+                }
             } catch (error) {
                 console.error('Error al procesar la imagen:', error);
                 alert("Ocurrió un error al procesar la imagen.");
                 document.getElementById('loading').style.display = 'none';
-            }
+            }
+            
         }
