@@ -1,10 +1,6 @@
 document.getElementById("uploadForm").onsubmit = async function(event){
             event.preventDefault();
             const fileInput = document.getElementById("file").files[0];
-            if (fileInput.files.length === 0) {
-                alert("Por favor, selecciona una imagen.");
-                return;
-            }
             
             const formData = new FormData();
             formData.append("file", fileInput);
