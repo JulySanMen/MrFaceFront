@@ -26,7 +26,7 @@ document.getElementById("uploadForm").onsubmit = async function(event){
 
                     // Muestra el enlace a Google Drive
                     const driveLink = document.getElementById("driveLink");
-                    driveLink.innerHTML = '<a href="https://drive.google.com/file/d/${result.drive_id}/view" target="_blank">Ver en Google Drive</a>';
+                    driveLink.innerHTML = <a href="https://drive.google.com/file/d/${result.drive_id}/view" target="_blank">Ver en Google Drive</a>;
                 }
             } catch (error) {
                 console.error('Error al procesar la imagen:', error);
