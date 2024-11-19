@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/estilo.css">
+    <link rel="stylesheet" href="/resources/css/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Detección de Puntos Faciales</title>
 </head>
@@ -27,18 +27,27 @@
                     </div>
                 </form>
             </div>
+
             <div class="card-section">
                 <h2>Puntos Clave</h2>
                 <div class="image-placeholder" id="imagePlaceholder">
                     <i class="fas fa-camera" style="font-size: 50px; color: #bbb;"></i>
                     <p>Resultado</p>
                 </div>
-                <img id="processedImage" src="" alt="resultado" style="display: none;">
+                <img id="processedImage" src="" alt="Resultado" style="display: none;">
                 <div id="driveLink"></div>
             </div>            
         </div>
+
+        <div class="buttons">
+            <button id="originalBtn">Ver Original</button>
+            <button id="brightnessBtn">Brillo</button>
+            <button id="horizontalFlipBtn">Voltear Horizontal</button>
+            <button id="verticalFlipBtn">Voltear Vertical</button>
+        </div>
     </div>
-    <script src="/static/js/upload.js"></script>
-    <script src="/static/js/script.js"></script>
+
+    <script src="/resources/js/upload.js"></script>
+    <script src="/resources/js/script.js"></script>
 </body>
 </html>
